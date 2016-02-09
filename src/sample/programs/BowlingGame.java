@@ -1,5 +1,6 @@
 package sample.programs;
 
+import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
@@ -14,6 +15,7 @@ public class BowlingGame {
 	private int[] knockDownBalls = new int[22];
 	private int currentThrow = 0;
 	private boolean isItFirstThrowInFrame = true;	
+	static Scanner scanner = new Scanner(System.in);	
 	
 	public boolean isFirstThrowInFrame(){
 		return isItFirstThrowInFrame;
@@ -53,29 +55,31 @@ public class BowlingGame {
 		return score;
 	}
 
-	public static void main(String[] args) {
-		BowlingGame bowlingGame = new BowlingGame();
-		String bowlingFrames = "9 1 9 1";
-		//Scanner scanner = new Scanner(System.in);		
-		final String SPACE = " ";
-		StringTokenizer tokenizer = new StringTokenizer(bowlingFrames, SPACE);		
-		while(tokenizer.hasMoreTokens()){
-			Pattern pattern = Pattern.compile("^.*[0-9].*$");
-			String token = tokenizer.nextToken();	
-			if(pattern.matcher(token).matches()){			
-				bowlingGame.addBalls(Integer.valueOf(token));	
-				continue;
+	public static void main(String[] args) {		
+		try{
+			    BowlingGame bowlingGame = new BowlingGame();
+				System.out.println("Please enter your inputs[Only Numerics seperated by space]:");
+				//System.out.println(scanner.next());
+				String input = scanner.nextLine();
+				StringTokenizer tokenizer = new StringTokenizer(input, " ");		
+				while(tokenizer.hasMoreTokens()){
+					Pattern pattern = Pattern.compile("^.*[0-9].*$");
+					String token = tokenizer.nextToken();	
+					if(pattern.matcher(token).matches()){			
+						bowlingGame.addBalls(Integer.valueOf(token));
+						continue;
+					}else{
+						System.out.println("Please enter numbers only.");
+						break;
+					}						
+				}					
+				if(!bowlingGame.isFirstThrowInFrame()){
+					bowlingGame.addBalls(0);
+				}		
+				System.out.println("Your Total Bowling Score : "+bowlingGame.getTotalScore());
+				scanner.close();
+			} catch (Exception e) {			
+				e.printStackTrace();
 			}
-			System.out.println("Pattern not matched...");
-			break;			
-		}	
-		
-		if(!bowlingGame.isFirstThrowInFrame()){
-			bowlingGame.addBalls(0);
-		}	
-	
-		System.out.println("Score : "+bowlingGame.getTotalScore());
-		
-	}
-	
+	}	
 }
