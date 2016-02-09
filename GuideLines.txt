@@ -19,7 +19,7 @@ C:\JAVAATG> javac BowlingGame.java
 This runs javac.exe, the compiler.  You should see nothing but the next system prompt...
 C:\JAVAATG> dir
 javac has created the BowlingGame.class file.  You should see BowlingGame.java and BowlingGame.class among the files.
-C:\mywork> java BowlingGame
+C:\JAVAATG> java BowlingGame
 This runs the Java interpreter. 
 It will ask you to enter the inputs in the command line. 
 Then You should see the program output based on your inputs
