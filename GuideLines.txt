@@ -1,4 +1,9 @@
 You can execute this java program from eclipse
+Create a Java Project
+Add the files to the src directory. (Make sure files are in appropriate package)
+For Junit, add the jar file to the build path. jar file located in lib folder.
+Right click the BowlingGame and run as Java Application
+For JUnit, Right click the TestBowlingGame and run as JUnit
 
 	OR
 	
