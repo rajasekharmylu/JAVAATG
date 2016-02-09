@@ -55,7 +55,7 @@ public class BowlingGame {
 
 	public static void main(String[] args) {
 		BowlingGame bowlingGame = new BowlingGame();
-		String bowlingFrames = "1 1 1 1 10 1 1 2 0";
+		String bowlingFrames = "9 1 9 1";
 		//Scanner scanner = new Scanner(System.in);		
 		final String SPACE = " ";
 		StringTokenizer tokenizer = new StringTokenizer(bowlingFrames, SPACE);		
