@@ -6,7 +6,8 @@ import org.apache.log4j.Logger;
 
 
 /**
- * @author Rajasekhar Mylu
+ * * @author Rajasekhar Mylu
+ * 
  * This Program takes a string of space separated numbers from 0 to 10 and calculates what that would be as a score in ten pin bowling.
  *
  */

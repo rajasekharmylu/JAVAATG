@@ -13,6 +13,9 @@ import org.apache.log4j.Logger;
 
 /**
  * @author Rajasekhar Mylu
+ * 
+ * This is the Abstract Class. It overrides the methods from the Game with empty body.
+ * The Corresponding Game Class will extend this Abstract Class and implement their own logic.
  *
  */
 public class AbstractGame implements Game {
@@ -30,8 +33,7 @@ public class AbstractGame implements Game {
 
 	@Override
 	public void addScoreForEachBall(int score) throws GameException {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override

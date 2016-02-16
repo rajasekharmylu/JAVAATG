@@ -3,6 +3,7 @@ package org.techm.gamingpoc;
 import java.util.ResourceBundle;
 
 /**
+ * This is the Game interface with Abstract methods.
  * @author Rajasekhar Mylu
  *
  */
