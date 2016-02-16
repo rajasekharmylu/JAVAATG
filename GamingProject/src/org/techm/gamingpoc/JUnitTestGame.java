@@ -3,7 +3,7 @@ package org.techm.gamingpoc;
 import junit.framework.TestCase;
 
 /**
- * @author Rajasekhar
+ * @author Rajasekhar Mylu
  *
  */
 public class JUnitTestGame extends TestCase {

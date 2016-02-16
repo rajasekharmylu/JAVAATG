@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 
 
 /**
- * @author Rajasekhar
+ * @author Rajasekhar Mylu
  * This Program takes a string of space separated numbers from 0 to 10 and calculates what that would be as a score in ten pin bowling.
  *
  */
@@ -23,10 +23,7 @@ public class BowlingGame extends AbstractGame implements Serializable{
 	private final int FRAME_MAX_SCORE = 10;
 	private final int MAX_VALUE = 10;		
 	
-	BowlingGame(){			
-		
-	}
-	
+
 	/**
 	 * This method validates the inputs given and adds the Balls Scored for each throw to a Score Board (Array). 
 	 *  	 

@@ -3,14 +3,16 @@ package org.techm.gamingpoc;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.PropertyResourceBundle;
+import java.io.InputStream;
+import java.util.Locale;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
 /**
- * @author Rajasekhar
+ * @author Rajasekhar Mylu
  *
  */
 public class AbstractGame implements Game {
@@ -19,9 +21,12 @@ public class AbstractGame implements Game {
 	private static final String INPUT_NOT_VALID_MESSAGE = "INPUT_NOT_VALI_MESSAGE1";
 	private static final String VALID_NUMBERS_MESSAGE = "VALID_NUMBERS_MESSAGE";
 	private static final String NOT_NEGATIVE_NUMBERS_MESSAGE = "NOT_NEGATIVE_NUMBERS_MESSAGE";	
-	FileInputStream fis = null;
-	File file = new File("resources/ResourceBundle.properties");
-	ResourceBundle resourceBundle = null;
+	private static final String BASIC_RESOURCE_BUNDLE = "ResourceBundle";	
+	private static final String CONFIG_PATH = "resources/Config.properties";
+	
+	Properties  properties =null;
+	ResourceBundle resourceBundle = null;	
+	Locale locale = null;
 
 	@Override
 	public void addScoreForEachBall(int score) throws GameException {
@@ -75,21 +80,52 @@ public class AbstractGame implements Game {
 		// TODO Auto-generated method stub		
 	}	
 	
+	/**
+	 * This method returns the Resource Bundle based on locale set in the Config.properties
+	 * @return ResourceBundle
+	 */
+	@Override
 	public ResourceBundle getResourceBundle() {
-		if(resourceBundle!=null)
-			return resourceBundle;
+		if(resourceBundle==null)				
+			 resourceBundle = ResourceBundle.getBundle(BASIC_RESOURCE_BUNDLE,getLocale());
+		return resourceBundle;
+	}	
+
+	/**
+	 * This method loads the properties file
+	 * @return Properties
+	 */	
+	protected Properties getProperties() { 
+		if(properties!=null)
+			return properties;
+		InputStream input = null;
+		File file = null;		
 		try {
-			fis = new FileInputStream(file);
-			resourceBundle = new PropertyResourceBundle(fis);
-		} catch (IOException e) {
-			e.printStackTrace();
+			properties = new Properties();
+			file = new File(CONFIG_PATH);
+			input = new FileInputStream(file);			
+			properties.load(input);			
+		} catch (IOException io) {
+			io.printStackTrace();
 		} finally {
-			try {
-				fis.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+			if (input != null) {
+				try {
+					input.close();
+					file = null;					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
-		return resourceBundle;
+		return properties;
+	}	
+	
+	/**
+	 * This method gets Locale
+	 * @return Locale
+	 */
+	protected Locale getLocale() {			
+		locale =  new Locale((String)getProperties().get("locale"));
+		return locale;
 	}
 }

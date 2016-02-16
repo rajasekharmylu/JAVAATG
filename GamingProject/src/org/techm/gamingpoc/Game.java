@@ -3,7 +3,7 @@ package org.techm.gamingpoc;
 import java.util.ResourceBundle;
 
 /**
- * @author Rajasekhar
+ * @author Rajasekhar Mylu
  *
  */
 public interface Game {
@@ -21,5 +21,4 @@ public interface Game {
 	int getTotalScore() throws GameException;
 	
 	ResourceBundle getResourceBundle();
-
 }

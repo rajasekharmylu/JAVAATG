@@ -2,6 +2,10 @@ package org.techm.gamingpoc;
 
 import java.io.Serializable;
 
+/**
+ * @author Rajasekhar Mylu
+ *
+ */
 public class FootBallGame extends AbstractGame implements Serializable{
 
 	/**

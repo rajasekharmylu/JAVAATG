@@ -1,7 +1,7 @@
 package org.techm.gamingpoc;
 
 /**
- * @author Rajasekhar
+ * @author Rajasekhar Mylu
  *
  */
 public class GameException extends Exception {
