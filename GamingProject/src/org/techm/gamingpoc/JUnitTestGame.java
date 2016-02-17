@@ -11,10 +11,10 @@ public class JUnitTestGame extends TestCase {
 		super(name);
 	}
 
-	private BowlingGame bowlingGame;
+	private BowlingGameService bowlingGame;
 
 	public void setUp() {
-		bowlingGame = new BowlingGame();
+		bowlingGame = new BowlingGameService();
 	}
 
 	
