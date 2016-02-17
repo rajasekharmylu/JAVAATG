@@ -2,7 +2,7 @@ package org.techm.gamingpoc;
 
 public class GameFactory {
 		
-	//use getShape method to get object of type GameService 
+	//use getGameService method to get object of type GameService 
 	   public static GameService getGameService(String gameType){
 	      if(gameType == null){
 	         return null;
