@@ -12,5 +12,11 @@ public class CricketGameService extends AbstractGameService implements Serializa
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	
+	public int getScoreForEachOver(int over) throws GameException{
+		return 0;
+	}
+
 
 }

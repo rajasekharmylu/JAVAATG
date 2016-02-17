@@ -24,6 +24,7 @@ public class AbstractGameService implements GameService {
 	private static final String INPUT_NOT_VALID_MESSAGE = "INPUT_NOT_VALI_MESSAGE1";
 	private static final String VALID_NUMBERS_MESSAGE = "VALID_NUMBERS_MESSAGE";
 	private static final String NOT_NEGATIVE_NUMBERS_MESSAGE = "NOT_NEGATIVE_NUMBERS_MESSAGE";	
+	private static final String INPUT_NOT_VALI_MESSAGE2 = "INPUT_NOT_VALI_MESSAGE2";	
 	private static final String BASIC_RESOURCE_BUNDLE = "ResourceBundle";	
 	private static final String CONFIG_PATH = "resources/Config.properties";
 	
@@ -34,19 +35,7 @@ public class AbstractGameService implements GameService {
 	@Override
 	public void addScoreForEachBall(int score) throws GameException {
 		// TODO Auto-generated method stub		
-	}
-
-	@Override
-	public int getScoreForEachFrame(int frame) throws GameException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getScoreForEachOver(int over) throws GameException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	}	
 
 	@Override
 	public int getScoreForBall(int ball) throws GameException {
@@ -61,11 +50,25 @@ public class AbstractGameService implements GameService {
 	}	
 	
 	/**
+	 * This method validates the input provided against REGULAR_EXPRESSION.Input Should contain 
+	 * @param score
+	 * @throws GameException
+	 */
+	protected void validateInputs(String score) throws GameException{		
+		try {
+			validateInputs(Integer.valueOf(score));
+		} catch (NumberFormatException e) {					
+			throw new GameException(getResourceBundle().getString(INPUT_NOT_VALI_MESSAGE2));
+		}
+	
+	}	
+	
+	/**
 	 * This method validates the input provide against REGULAR_EXPRESSION.Input Should contain 
 	 * @param score
 	 * @throws GameException
 	 */
-	public void validateInputs(int score) throws GameException{
+	protected void validateInputs(int score) throws GameException{
 		Pattern pattern = Pattern.compile(REGULAR_EXPRESSION);
 		if(!pattern.matcher(String.valueOf(score)).matches()){			
 			throw new GameException(getResourceBundle().getString(INPUT_NOT_VALID_MESSAGE));

@@ -13,8 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class BowlingGameService extends AbstractGameService implements Serializable{	
 	
-	private static final long serialVersionUID = 1L;	
-	private static final String INPUT_NOT_VALI_MESSAGE2 = "INPUT_NOT_VALI_MESSAGE2";	
+	private static final long serialVersionUID = 1L;
 	final static Logger logger = Logger.getLogger(org.techm.gamingpoc.BowlingGameService.class);
 	private int ball = 0;
 	private int currentFrame = 0;
@@ -61,8 +60,7 @@ public class BowlingGameService extends AbstractGameService implements Serializa
 	 * If the Balls thrown in the frame is Not Spare nor Strike, then score = FRAME[BALL1 + BALL2]. 
 	 * @return score
 	 * @throws GameException 
-	 */
-	@Override
+	 */	
 	public int getScoreForEachFrame(final int frame) throws GameException {
 		validateInputs(frame);
 		int score = 0;
@@ -79,21 +77,6 @@ public class BowlingGameService extends AbstractGameService implements Serializa
 		}
 		return score;
 	}
-	
-	
-	/**
-	 * This method validates the input provided against REGULAR_EXPRESSION.Input Should contain 
-	 * @param score
-	 * @throws GameException
-	 */
-	private void validateInputs(String score) throws GameException{		
-		try {
-			validateInputs(Integer.valueOf(score));
-		} catch (NumberFormatException e) {					
-			throw new GameException(getResourceBundle().getString(INPUT_NOT_VALI_MESSAGE2));
-		}
-	
-	}	
 	
 
 	/**

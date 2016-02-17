@@ -19,22 +19,24 @@ public class TestGameService {
 	private static final String USERNAME_KEY= "userName";
 	private static final String ENTER_YOUR_INPUTS= "PLEASE_ENTER_INPUTS_MESSAGE";
 	private static final String YOUR_SCORE= "YOUR_SCORE";
+	private static final String GAME_TYPE="BOWLING";
 	final static Scanner scanner = new Scanner(System.in);		
 
 	public static void main(String[] args) {		
 		try{			    
-				GameService bowlingGame = new BowlingGameService();	
-				logger.info(bowlingGame.getResourceBundle().getString(WELCOME_MESSAGE)+SPACE+((BowlingGameService)bowlingGame).getProperties().getProperty(USERNAME_KEY));
-				logger.info(bowlingGame.getResourceBundle().getString(ENTER_YOUR_INPUTS));
+				GameFactory gameFactory = new GameFactory();
+				GameService gameService = gameFactory.getGameService(GAME_TYPE);
+				logger.info(gameService.getResourceBundle().getString(WELCOME_MESSAGE)+SPACE+((BowlingGameService)gameService).getProperties().getProperty(USERNAME_KEY));
+				logger.info(gameService.getResourceBundle().getString(ENTER_YOUR_INPUTS));
 				String input = scanner.nextLine();
 				StringTokenizer tokenizer = new StringTokenizer(input, SPACE);		
 				while(tokenizer.hasMoreTokens()){
-					bowlingGame.addScoreForEachBall(tokenizer.nextToken());					
+					gameService.addScoreForEachBall(tokenizer.nextToken());					
 				}					
-				if(!((BowlingGameService)bowlingGame).isFirstThrowInFrame()){
-					bowlingGame.addScoreForEachBall(0);
+				if(!((BowlingGameService)gameService).isFirstThrowInFrame()){
+					gameService.addScoreForEachBall(0);
 				}	
-				logger.info(bowlingGame.getResourceBundle().getString(YOUR_SCORE)+bowlingGame.getTotalScore());				
+				logger.info(gameService.getResourceBundle().getString(YOUR_SCORE)+gameService.getTotalScore());				
 				scanner.close();				
 			} catch (GameException e) {			
 				logger.error("Error:"+e);
