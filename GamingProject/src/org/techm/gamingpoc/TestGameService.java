@@ -23,9 +23,8 @@ public class TestGameService {
 	final static Scanner scanner = new Scanner(System.in);		
 
 	public static void main(String[] args) {		
-		try{			    
-				GameFactory gameFactory = new GameFactory();
-				GameService gameService = gameFactory.getGameService(GAME_TYPE);
+		try{	
+				GameService gameService = GameFactory.getGameService(GAME_TYPE);
 				logger.info(gameService.getResourceBundle().getString(WELCOME_MESSAGE)+SPACE+((BowlingGameService)gameService).getProperties().getProperty(USERNAME_KEY));
 				logger.info(gameService.getResourceBundle().getString(ENTER_YOUR_INPUTS));
 				String input = scanner.nextLine();
